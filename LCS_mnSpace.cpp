@@ -4,17 +4,6 @@ int max(int a, int b)
 {
     return a > b ? a : b;
 }
-void LCS(string a, string b, int x, int y, int **m)
-{
-    if (a[x - 1] == b[y - 1])
-    {
-        m[x][y] = m[x - 1][y - 1] + 1;
-    }
-    else
-    {
-        m[x][y] = max(m[x - 1][y], m[x][y - 1]);
-    }
-}
 string backtrack(string a, string b, int **m, int l1, int l2)
 {
     stack<int> s;
@@ -50,7 +39,14 @@ int main()
     {
         for (int j = 1; j < l2 + 1; j++)
         {
-            LCS(s1, s2, i, j, m);
+            if (s1[i - 1] == s2[j - 1])
+            {
+                m[i][j] = m[i - 1][j - 1] + 1;
+            }
+            else
+            {
+                m[i][j] = max(m[i - 1][j], m[i][j - 1]);
+            }
         }
     }
     cout << m[l1][l2] << endl;

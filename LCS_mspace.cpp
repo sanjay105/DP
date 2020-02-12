@@ -4,18 +4,6 @@ int max(int a, int b)
 {
     return a > b ? a : b;
 }
-void LCS(string a, string b, int x, int y, int *m0, int *m1)
-{
-    if (a[x - 1] == b[y - 1])
-    {
-        m1[y] = m0[y - 1] + 1;
-    }
-    else
-    {
-        m1[y] = max(m0[y], m1[y - 1]);
-    }
-}
-
 int longestCommonSubsequence(string text1, string text2)
 {
     int l1 = text1.length(), l2 = text2.length();
@@ -26,7 +14,14 @@ int longestCommonSubsequence(string text1, string text2)
     {
         for (int j = 1; j < l2 + 1; j++)
         {
-            LCS(text1, text2, i, j, m0, m1);
+            if (text1[i - 1] == text2[j - 1])
+            {
+                m1[j] = m0[j - 1] + 1;
+            }
+            else
+            {
+                m1[j] = max(m0[j], m1[j - 1]);
+            }
         }
         for (int k = 0; k < l2 + 1; k++)
         {
