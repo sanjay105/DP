@@ -4,7 +4,7 @@ int max(int a, int b)
 {
     return a > b ? a : b;
 }
-int longestCommonSubsequence(string text1, string text2)
+int longestCommonSubsequence_m(string text1, string text2)
 {
     int l1 = text1.length(), l2 = text2.length();
     int *m1, *m0;
@@ -35,5 +35,5 @@ int main()
 {
     string s1 = "abbsddsghfgbvsdn";
     string s2 = "afkjknfdbretvjm";
-    cout << longestCommonSubsequence(s1, s2);
+    cout << longestCommonSubsequence_m(s1, s2);
 }

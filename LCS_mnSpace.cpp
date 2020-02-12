@@ -24,10 +24,8 @@ string backtrack(string a, string b, int **m, int l1, int l2)
     }
     return res;
 }
-int main()
+string longestCommonSubsequence_mn(string s1, string s2)
 {
-    string s1 = "abbsddsghfgbvsdn";
-    string s2 = "afkjknfdbretvjm";
     int l1 = s1.length(), l2 = s2.length();
     int **m = (int **)malloc(sizeof(int *) * (l1 + 1));
     for (int j = 0; j < l1 + 1; j++)
@@ -50,5 +48,11 @@ int main()
         }
     }
     cout << m[l1][l2] << endl;
-    cout << backtrack(s1, s2, m, l1, l2);
+    return backtrack(s1, s2, m, l1, l2);
+}
+int main()
+{
+    string s1 = "abbsddsghfgbvsdn";
+    string s2 = "afkjknfdbretvjm";
+    cout << longestCommonSubsequence_mn(s1, s2);
 }
